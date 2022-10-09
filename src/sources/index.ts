@@ -66,6 +66,18 @@ export const getCountries = (): Promise<string[]> => {
 	})
 };
 
+export const getFields = (country: string): Promise<string[]> => {
+	const fields1 = ['firstName', 'email', 'password', 'confirm', 'lastName'];
+	const fields2 = ['firstName', 'email', 'lastName'];
+	return new Promise((resolve) => {
+		setTimeout(() => {
+			const random = Math.floor(Math.random() * 2);
+
+			resolve(random === 1 ? fields1 : fields2);
+		}, 1000);
+	})
+};
+
 export const getUsersData = (page: number, search: IAddittionalSearch): Promise<{lastPage: number, users: IUser[]}> => {
 	const searchKey = Object.keys(search)[0];
 	const searchValue: string = Object.values(search)[0];
@@ -95,3 +107,17 @@ export const getUsersData = (page: number, search: IAddittionalSearch): Promise<
 		});
 	});
 };
+
+export const setRegister = <T extends {}>(data: T): Promise<boolean> => {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			const keys = Object.keys(data);
+
+			if (keys.length > 5) {
+				resolve(true);
+			} else {
+				reject(false);
+			}
+		}, 1000);
+	});
+}

@@ -5,6 +5,7 @@ import HighWorkWithAsync from "./examples/high/HighWorkWithAsync";
 import MediumWorkWithRedux from "./examples/medium/MediumWorkWithRedux";
 import MediumWorkWithAsync from "./examples/medium/MediumWorkWithAsync";
 import Simple from "./examples/simple/Simple";
+import Test from "./examples/test/Test";
 
 import "./App.css";
 
@@ -21,8 +22,8 @@ function App() {
     // console.log('==========>phase', phase);
     // console.log('==========>actualDuration', actualDuration);
     // console.log('==========>baseDuration', baseDuration);
-    console.log('==========>startTime', startTime);
-    console.log('==========>commitTime', commitTime);
+    // console.log('==========>startTime', startTime);
+    // console.log('==========>commitTime', commitTime);
   }
   return (
     <Profiler id="app" onRender={onRenderCallback} >
@@ -30,8 +31,9 @@ function App() {
         {/*<HighWorkWithRedux />*/}
         {/*<HighWorkWithAsync />*/}
         {/*<MediumWorkWithRedux />*/}
-        <MediumWorkWithAsync />
+        {/*<MediumWorkWithAsync />*/}
         {/*<Simple />*/}
+        <Test />
       </div>
     </Profiler>
   );
