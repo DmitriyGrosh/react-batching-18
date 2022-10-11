@@ -8,8 +8,8 @@ import Simple from "./examples/simple/Simple";
 import Test from "./examples/test/Test";
 import Test2 from "./examples/test/Test2";
 import TestWithFocus from "./examples/test/TestWithFocus";
-import TestWithFocusFlush from "./examples/test/TestWithFocusFlush";
 import { Button } from "@mui/material";
+import TestWithFocusFlush from "./examples/test/TestWithFocusFlush";
 
 import "./App.css";
 

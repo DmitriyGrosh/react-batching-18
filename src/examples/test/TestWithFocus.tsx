@@ -22,12 +22,11 @@ import {
 } from "../../sources";
 
 import RenderCounter from "./RenderCounter";
-import {flushSync} from "react-dom";
 
 type TField = 'email' | 'firstName' | 'lastName' | 'state' | 'city' | 'password' | 'confirm' | 'phone' | 'country';
 type TValue<T> = Partial<Record<TField, T>>;
 
-const Test2 = () => {
+const TestWithFocus = () => {
 	const [countries, setCountries] = useState<string[]>([]);
 	const [countryLoading, setCountryLoading] = useState<boolean>(false);
 	const [countryError, setCountryError] = useState<boolean>(false);
@@ -181,26 +180,24 @@ const Test2 = () => {
 			names.push(name);
 		});
 
-		flushSync(() => {
-			setDirtyFields(dirties);
-			setTouchedFields(touches);
-			setDefaultValues(values);
-			setErrorFields(errors);
-			setNameFields(names);
-			setFocusFields(focuses);
-			setDisabledFields(disables);
-			setRefFields(refs);
+		setDirtyFields(dirties);
+		setTouchedFields(touches);
+		setDefaultValues(values);
+		setErrorFields(errors);
+		setNameFields(names);
+		setFocusFields(focuses);
+		setDisabledFields(disables);
+		setRefFields(refs);
 
-			const focusesKeys = Object.keys(focuses);
-			if (focusesKeys.length) {
-				const type = focusesKeys[0] as TField;
+		const focusesKeys = Object.keys(focuses);
+		if (focusesKeys.length) {
+			const type = focusesKeys[0] as TField;
 
-				refFields[type]?.focus();
-			}
+			refFields[type]?.focus();
+		}
 
-			setSubmitEnabled(true);
-			setFieldsLoading(false);
-		})
+		setSubmitEnabled(true);
+		setFieldsLoading(false);
 	};
 
 	const handleChangeValue = (event: ChangeEvent<HTMLInputElement>) => {
@@ -257,14 +254,6 @@ const Test2 = () => {
 		});
 	};
 
-
-	// useLayoutEffect(() => {
-	// 	flushSync(() => {
-	// 		refFields?.phone?.focus();
-	// 	});
-	//
-	// 	refFields?.phone?.focus();
-	// }, [refFields]);
 	return (
 		<Box
 			display="flex"
@@ -495,4 +484,4 @@ const Test2 = () => {
 	)
 };
 
-export default Test2;
+export default TestWithFocus;

@@ -1,3 +1,4 @@
+
 import React, {
 	ChangeEvent,
 	FocusEvent,
@@ -27,7 +28,7 @@ import {flushSync} from "react-dom";
 type TField = 'email' | 'firstName' | 'lastName' | 'state' | 'city' | 'password' | 'confirm' | 'phone' | 'country';
 type TValue<T> = Partial<Record<TField, T>>;
 
-const Test2 = () => {
+const TestWithFocusFlush = () => {
 	const [countries, setCountries] = useState<string[]>([]);
 	const [countryLoading, setCountryLoading] = useState<boolean>(false);
 	const [countryError, setCountryError] = useState<boolean>(false);
@@ -192,7 +193,7 @@ const Test2 = () => {
 			setRefFields(refs);
 			setSubmitEnabled(true);
 			setFieldsLoading(false);
-		})
+		});
 
 		const focusesKeys = Object.keys(focuses);
 		if (focusesKeys.length) {
@@ -481,9 +482,9 @@ const Test2 = () => {
 					Отправить
 				</TextField>
 			</Box>
-			<RenderCounter name="with flush focus" />
+			<RenderCounter name="with focus" />
 		</Box>
 	)
 };
 
-export default Test2;
+export default TestWithFocusFlush;
