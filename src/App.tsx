@@ -1,15 +1,11 @@
 import React, { Profiler, useState } from "react";
 
-import HighWorkWithRedux from "./examples/high/HighWorkWithRedux";
-import HighWorkWithAsync from "./examples/high/HighWorkWithAsync";
-import MediumWorkWithRedux from "./examples/medium/MediumWorkWithRedux";
-import MediumWorkWithAsync from "./examples/medium/MediumWorkWithAsync";
-import Simple from "./examples/simple/Simple";
-import Test from "./examples/test/Test";
-import Test2 from "./examples/test/Test2";
-import TestWithFocus from "./examples/test/TestWithFocus";
 import { Button } from "@mui/material";
-import TestWithFocusFlush from "./examples/test/TestWithFocusFlush";
+
+import AsyncAwait from "./demos/AsyncAwait";
+import DynamicForm from "./demos/DynamicForm";
+import Focus17DynamicForm from "./demos/Focus17DynamicForm";
+import FocusDynamicForm from "./demos/FocusDynamicForm";
 
 import "./App.css";
 
@@ -32,14 +28,15 @@ function App() {
   }
   return (
     <Profiler id="app" onRender={onRenderCallback} >
-      <div className="App">
+      {/*<div className="App">*/}
         <Button variant={view === 0 ? "contained" : 'outlined'} onClick={() => setView(0)}>Без фокуса</Button>
         <Button variant={view === 1 ? "contained" : 'outlined'} onClick={() => setView(1)}>С фокусом как в 17 реакте</Button>
         <Button variant={view === 2 ? "contained" : 'outlined'} onClick={() => setView(2)}>С фокусом с flushSync</Button>
-        {view === 0 && <Test2 />}
-        {view === 1 && <TestWithFocus />}
-        {view === 2 && <TestWithFocusFlush />}
-      </div>
+        {view === 0 && <DynamicForm />}
+        {view === 1 && <Focus17DynamicForm />}
+        {view === 2 && <FocusDynamicForm />}
+      {/*</div>*/}
+      {/*<AsyncAwait />*/}
     </Profiler>
   );
 }

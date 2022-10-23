@@ -5,7 +5,9 @@ import React, {
 	SyntheticEvent,
 	useState,
 	useCallback,
+	useLayoutEffect,
 } from "react";
+import { flushSync } from "react-dom";
 import {
 	Autocomplete,
 	AutocompleteValue,
@@ -18,14 +20,14 @@ import {
 	getFields2,
 	setFields,
 	IField,
-} from "../../sources";
+} from "../sources";
 
 import RenderCounter from "./RenderCounter";
 
 type TField = 'email' | 'firstName' | 'lastName' | 'state' | 'city' | 'password' | 'confirm' | 'phone' | 'country';
 type TValue<T> = Partial<Record<TField, T>>;
 
-const Test2 = () => {
+const FocusDynamicForm = () => {
 	const [countries, setCountries] = useState<string[]>([]);
 	const [countryLoading, setCountryLoading] = useState<boolean>(false);
 	const [countryError, setCountryError] = useState<boolean>(false);
@@ -179,17 +181,25 @@ const Test2 = () => {
 			names.push(name);
 		});
 
-		setDirtyFields(dirties);
-		setTouchedFields(touches);
-		setDefaultValues(values);
-		setErrorFields(errors);
-		setNameFields(names);
-		setFocusFields(focuses);
-		setDisabledFields(disables);
-		setRefFields(refs);
+		flushSync(() => {
+			setDirtyFields(dirties);
+			setTouchedFields(touches);
+			setDefaultValues(values);
+			setErrorFields(errors);
+			setNameFields(names);
+			setFocusFields(focuses);
+			setDisabledFields(disables);
+			setRefFields(refs);
+			setSubmitEnabled(true);
+			setFieldsLoading(false);
+		});
 
-		setSubmitEnabled(true);
-		setFieldsLoading(false);
+		const focusesKeys = Object.keys(focuses);
+		if (focusesKeys.length) {
+			const type = focusesKeys[0] as TField;
+
+			refFields[type]?.focus();
+		}
 	};
 
 	const handleChangeValue = (event: ChangeEvent<HTMLInputElement>) => {
@@ -471,9 +481,9 @@ const Test2 = () => {
 					Отправить
 				</TextField>
 			</Box>
-			<RenderCounter name="default" />
+			<RenderCounter name="with focus" />
 		</Box>
-	)
+	);
 };
 
-export default Test2;
+export default FocusDynamicForm;
