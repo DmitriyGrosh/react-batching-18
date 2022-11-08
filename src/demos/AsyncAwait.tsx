@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import {Box, Button, CircularProgress, TextField} from "@mui/material";
-import {createDeal, sleep} from "../sources";
+import {
+	Box,
+	Button,
+	CircularProgress,
+	TextField,
+} from "@mui/material";
+import { createDeal, sleep } from "../sources";
 import RenderCounter from "./RenderCounter";
 
 const AsyncAwait = () => {
 	const [loading, setLoading] = useState<boolean>(false);
 	const [deal, setDeal] = useState<number>(0);
 	const [submitButtonDisabled, setSubmitButtonDisabled] = useState<boolean>(false);
-	const [counter, setCounter] = useState<number>(200);
 
 	const onClick = async (formData: any) => {
 		sleep(3000);
@@ -41,20 +45,20 @@ const AsyncAwait = () => {
 			flexDirection="column"
 			gap="20px"
 		>
-			<Button onClick={onClick}>Click</Button>
-			{loading ? (<CircularProgress color="inherit" size={20} />) : (
-				<Box>
+			<button className="click-button" onClick={onClick}>Click</button>
+			{loading ? (<CircularProgress color="inherit" size={100} />) : (
+				<Box className="deal-text">
 					{deal}
 				</Box>
 			)}
-			{deal}
+			<span className="deal-text">{deal}</span>
 			<TextField
-				type="submit"
-				disabled={!submitButtonDisabled}
+			           type="submit"
+			           disabled={!submitButtonDisabled}
+			           className="async-await-button"
 			>
 				Отправить
 			</TextField>
-			{/*<span key={counter}>{counter}</span>*/}
 			<RenderCounter name="async await" />
 		</Box>
 	);

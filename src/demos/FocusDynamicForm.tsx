@@ -258,6 +258,8 @@ const FocusDynamicForm = () => {
 
 	return (
 		<Box
+			width="100%"
+			height="100%"
 			display="flex"
 			flexDirection="column"
 			component="form"
@@ -278,6 +280,7 @@ const FocusDynamicForm = () => {
 				renderInput={(params) => (
 					<TextField
 						{...params}
+						
 						placeholder="Select country"
 						InputProps={{
 							...params.InputProps,
@@ -295,6 +298,7 @@ const FocusDynamicForm = () => {
 			/>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
 				<TextField
+					
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('email') || disabledFields?.email}
@@ -316,6 +320,7 @@ const FocusDynamicForm = () => {
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
 				<TextField
+					
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('phone') || disabledFields?.phone}
@@ -338,6 +343,7 @@ const FocusDynamicForm = () => {
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
 				<TextField
+					
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('firstName') || disabledFields?.firstName}
@@ -359,6 +365,7 @@ const FocusDynamicForm = () => {
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
 				<TextField
+					
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('lastName') || disabledFields?.lastName}
@@ -380,6 +387,7 @@ const FocusDynamicForm = () => {
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
 				<TextField
+					
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('state') || disabledFields?.state}
@@ -401,6 +409,7 @@ const FocusDynamicForm = () => {
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
 				<TextField
+					
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('city') || disabledFields?.city}
@@ -422,6 +431,7 @@ const FocusDynamicForm = () => {
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
 				<TextField
+					
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('password') || disabledFields?.password}
@@ -444,6 +454,7 @@ const FocusDynamicForm = () => {
 			</Box>
 			<Box width="80%" display="flex" alignItems="center" gap="20px">
 				<TextField
+					
 					inputRef={handleFormInput}
 					fullWidth
 					disabled={!nameFields.includes('confirm') || disabledFields?.confirm}
@@ -466,6 +477,7 @@ const FocusDynamicForm = () => {
 			</Box>
 			<Box width="60%">
 				<TextField
+					
 					fullWidth
 					error={submitError}
 					disabled={!submitEnabled}
